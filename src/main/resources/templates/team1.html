@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)# -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>       
+  <div class="container">
+  	<div class="mws-panel grid_8">
+      	<div class="mws-panel-header">
+          	<span class="mws-i-24 i-sign-post">添加队伍</span>
+          </div>
+          <div class="mws-panel-body">
+          	<form class="mws-form">
+          		<div class="mws-form-inline">
+                      <div class="mws-form-row">
+                          <label>队伍名称</label>
+                          <div class="mws-form-item large">
+                          	<input type="text" id="name" name="name" class="mws-textinput" />
+                          </div>
+                      </div>
+          		</div>
+          		<div class="mws-button-row">
+          			<input type="reset" id="team_form_reset" value="取消" class="mws-button gray left" />
+          			<button id="team_form_submit">添加</button>
+          		</div>
+          	</form>
+          </div>
+      </div>
+      <div class="mws-panel grid_8 mws-collapsible">
+     	<div class="mws-panel-header">
+         	<span class="mws-i-24 i-table-1">队伍列表</span>
+         </div>
+         <div class="mws-panel-body">
+             <table class="mws-table">
+                 <thead>
+                     <tr>
+                         <th>编号</th>
+                         <th>队名</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr class="gradeX" th:each="team : ${teams}">
+                         <td th:text="${team.id}">Trident</td>
+                         <td th:text="${team.name}"></td>
+                     </tr>
+                 </tbody>
+             </table>
+         </div>
+     </div>
+  </div>
+  <script type="text/javascript" src="js/index1.js"></script>
+</body>
+</html>

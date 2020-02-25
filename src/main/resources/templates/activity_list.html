@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)# -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.dualListBox-1.3.min.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="plugins/flot/excanvas.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/mws.js"></script>
+</head>
+<body>
+   <div class="container">
+   <div class="mws-panel grid_8 mws-collapsible">
+       	<div class="mws-panel-header">
+           	<span class="mws-i-24 i-table-1">活动列表</span>
+         </div>
+         <div class="mws-panel-body">
+             <table class="mws-table">
+                 <thead>
+                     <tr>
+                         <th>活动名称</th>
+                         <th>活动时间</th>
+                         <th>活动地点</th>
+                         <th>是否已过期</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr class="gradeX" th:each="act : ${activities}">
+                         <td th:text="${act.name}">Trident</td>
+                         <td th:text="${act.holdtime}">Internet
+                              Explorer 4.0</td>
+                         <td th:text="${act.holdaddress}">Win 95+</td>
+                         <td th:text="${act.active}" class="center">4</td>
+                     </tr>
+                 </tbody>
+             </table>
+         </div>
+     </div>
+   </div>
+</body>
+</html>

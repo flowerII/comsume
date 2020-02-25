@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <!-- import CSS -->
+  <link rel="stylesheet" href="/vue/index.css"/>
+  <link rel="stylesheet" href="/vue/login.css"/>
+  <title>福建师范大学机房预约管理系统</title>
+</head>
+<body>
+  <div id="app">
+	<el-row type="flex" class="row-bg" justify="center">
+	  <el-col :span="6">
+		<h3>福建师范大学机房预约管理系统</h3>
+		<div style="margin: 20px;"></div>
+	  	<el-form label-position="left" label-width="80px" :model="loginForm">
+		  <el-form-item label="账号">
+		    <el-input v-model="loginForm.username"></el-input>
+		  </el-form-item>
+		  <el-form-item label="密码">
+		    <el-input type="password" v-model="loginForm.password"></el-input>
+		  </el-form-item>
+		  <el-form-item>
+		    <el-button type="primary" @click="submitLoginForm()">登录</el-button>
+		  </el-form-item>
+		</el-form>
+	  </div></el-col>
+	</el-row>
+</div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="/vue/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="/vue/index.js"></script>
+  <script src="/vue/axios.min.js"></script>
+  <script src="/vue/login.js"></script>
+</html>

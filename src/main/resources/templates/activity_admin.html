@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)# -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.dualListBox-1.3.min.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="plugins/flot/excanvas.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/mws.js"></script>
+<script type="text/javascript" src="js/activity.js"></script>
+</head>
+<body>
+   <div class="container">
+   	<div class="mws-panel grid_8">
+       	<div class="mws-panel-header">
+           	<span class="mws-i-24 i-sign-post">添加活动</span>
+           </div>
+           <div class="mws-panel-body">
+           	<form class="mws-form" id="activity_form" th:action="@{/activity/add}" method="post">
+           		<div class="mws-form-inline">
+                       <div class="mws-form-row">
+                           <label>活动名称</label>
+                           <div class="mws-form-item large">
+                           	<input type="text" id="name" name="name" class="mws-textinput" />
+                           </div>
+                       </div>
+                       <div class="mws-form-row">
+                           <label>举办时间</label>
+                           <div class="mws-form-item large">
+                           	<input type="date" id="holdtime" name="holdtime" class="mws-textinput" />
+                           </div>
+                       </div>
+                       <div class="mws-form-row">
+                           <label>举办地点</label>
+                           <div class="mws-form-item large">
+                           	<input type="text" id="holdaddress" name="holdaddress" class="mws-textinput" />
+                           </div>
+                       </div>
+                       <div class="mws-form-row">
+                           <label>是否加权平均分</label>
+                           <div class="mws-form-item">
+                            <ul class="mws-form-list">
+                            	<li><input type="radio" id="avg_true" name="avg" value="true"/> <label for="male">是</label></li>
+                            	<li><input type="radio" id="avg_false" checked="checked" name="avg" value="false"/> <label for="female">否</label></li>
+                            </ul>
+                           </div>
+                       </div>
+                       <div class="mws-form-row">
+                           <label>其他(超时)扣分</label>
+                           <div class="mws-form-item">
+                            <ul class="mws-form-list">
+                            	<li><input type="radio" id="koufen_true" name="koufen" value="true"/> <label for="male">是</label></li>
+                            	<li><input type="radio" id="koufen_false" checked="checked" name="koufen" value="false"/> <label for="female">否</label></li>
+                            </ul>
+                           </div>
+                       </div>
+                       <div class="mws-form-row">
+               				<label>参加队伍</label>
+               				<div class="mws-form-item small">
+               					<select id="teams_join" name="teams_join" multiple="multiple" size="8">
+               						<option th:value='${team.id}' th:each="team :${teams}" th:text="${team.name}">Option 1</option>
+               					</select>
+               				</div>
+               			</div>
+                       <div class="mws-form-row">
+		       				<label>评委添加</label>
+		       				<div class="mws-form-item large">
+		                       	<div class="mws-dualbox clearfix">
+		                           	<div class="mws-dualbox-col1">
+		                               	<div class="mws-dualbox-filter clearfix">
+		                                       <label for="box1Filter">所有评委</label>
+		                                       <input type="text" id="box1Filter" class="mws-textinput" />
+		                                       <button type="button" id="box1Clear">X</button>
+		                                   </div>
+		
+		                                   <select id="box1View" multiple="multiple" size="15">
+		                                       <option th:value="${user.id}" th:each="user : ${users}"><p th:text="${user.username}"></p></option>
+		                                   </select>
+		                                   <span id="box1Counter" class="countLabel"></span>
+		                                   <select id="box1Storage"></select>
+		                               </div>
+		                               <div class="mws-dualbox-col2">
+		                                   <button id="to2" type="button">&gt;</button>
+		                                   <button id="allTo2" type="button">&gt;&gt;</button>
+		                                   <div class="clear"></div>
+		                                   <button id="allTo1" type="button">&lt;&lt;</button>
+		                                   <button id="to1" type="button">&lt;</button>
+		                               </div>
+		                               <div class="mws-dualbox-col3">
+		                                <div class="mws-dualbox-filter clearfix">
+		                                    <label for="box2Filter">当前选中评委</label>
+		                                    <input type="text" id="box2Filter" class="mws-textinput" />
+		                                    <button type="button" id="box2Clear">X</button>
+		                                   </div>
+		
+		                                   <select id="box2View" multiple="multiple" name="box2View" size="15"></select>
+		                                   <span id="box2Counter" class="countLabel"></span>
+		                                   <select id="box2Storage"></select>
+		                               </div>
+		                           </div>
+		                       </div>
+		       			</div>
+		       			<div class="mws-form-row">
+               				<label>评分项添加</label>
+               				<div>
+				             <div>
+				             	<table class="mws-table">
+				                 <thead>
+				                     <tr>
+				                         <th><input type="text" id="key" placeholder="评分项"></input></th>
+				                         <th><input type="text" id="value" placeholder="分数"></input></th>
+				                         <th><button id="fenshu">添加</button></th>
+				                     </tr>
+				                 </thead>
+				                 <tbody>
+				                 </tbody>
+				              </table>
+				             </div>
+				         </div>
+               			</div>
+           		</div>
+           		<div class="mws-button-row">
+           			<input type="submit" value="添加" id="activity_form_add" class="mws-button green"/>
+           		</div>
+           	</form>
+           </div>
+       </div>
+   </div>
+</body>
+</html>

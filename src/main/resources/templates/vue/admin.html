@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <!-- import CSS -->
+  <link rel="stylesheet" href="/vue/index.css"/>
+  <link rel="stylesheet" href="/vue/custom.css"/>
+  <title>福建师范大学机房预约管理系统</title>
+</head>
+<body>
+  <div id="app">
+  <el-container>
+	<el-header style="height: 72px; font-size: 24px">
+		<span>福建师范大学机房预约管理系统</span>
+		<span style="float:right">{{ username }}||<span style="float:right"><a v-bind:href="logout">退出</a></span></span>
+    </el-header>
+  <el-container>
+    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+    <el-menu :default-openeds="['1', '2', '3']">
+      <el-submenu index="1">
+        <template slot="title"><i class="el-icon-message"></i>我的预约</template>
+        <el-menu-item-group>
+          <template slot="title"><router-link to="/applys">预约记录</router-link></template>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <template slot="title"><router-link to="/make">新建预约</router-link></template>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="2">
+        <template slot="title"><i class="el-icon-menu"></i>机房管理</template>
+        <el-menu-item-group>
+          <template slot="title"><router-link to="/all_lab">机房查询</router-link></template>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <template slot="title"><router-link to="/add_lab">机房新增</router-link></template>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="3">
+        <template slot="title"><i class="el-icon-setting"></i>预约管理</template>
+        <el-menu-item-group>
+          <template slot="title"><router-link to="/confirm">预约审批</router-link></template>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <template slot="title"><router-link to="/team">数据统计</router-link></template>
+        </el-menu-item-group>
+      </el-submenu>
+    </el-menu>
+	</el-aside>   
+    <el-main>
+	  <router-view></router-view>
+    </el-main>
+  </el-container>
+	<el-footer style="text-align: center; font-size: 12px">
+      <span>qianshu tec @千树科技有限公司</span>
+    </el-footer>
+</el-container>
+  </div>
+  <div>
+  	<input id="username" type="hidden" th:value="${username}"></input>
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="/vue/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="/vue/index.js"></script>
+  <script src="/vue/vue-router.js"></script>
+  <script src="/vue/axios.min.js"></script>
+  <script src="/vue/admin.js"></script>
+</html>

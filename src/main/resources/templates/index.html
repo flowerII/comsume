@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatiable" content="ie=edge"/>
+  <link rel="stylesheet" href="/css/index_vue.css"/>
+  <title>福建师范大学实验室预约系统</title>
+</head>
+<body>
+  <div id="app">
+	<transition-group>
+		<router-view name="header"></router-view>
+		<router-view name="left"></router-view>
+		<router-view name="main"></router-view>
+	</transition-group>
+  </div>
+</body>
+  <script src="/vue/vue.js"></script>
+  <script src="/vue/vue-router.js"></script>
+  <script src="/vue/axios.min.js"></script>
+  <script src="/vue/main.js"></script>
+</html>

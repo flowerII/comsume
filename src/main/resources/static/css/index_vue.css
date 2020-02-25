@@ -1,0 +1,10 @@
+.v-enter,
+.v-leave-to{
+	opacity:0;
+	transform:translateX(140px);
+}
+
+.v-enter-active,
+.v-leaf-ativie{
+	transition:all 2s ease;
+}
